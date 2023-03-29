@@ -1,0 +1,8 @@
+dotnet --list-sdks
+3.1.426 [C:\Program Files\dotnet\sdk]
+5.0.408 [C:\Program Files\dotnet\sdk]
+7.0.100-rc.2.22477.23 [C:\Program Files\dotnet\sdk]
+7.0.100 [C:\Program Files\dotnet\sdk]
+7.0.202 [C:\Program Files\dotnet\sdk]
+8.0.100-preview.2.23157.25 [C:\Program Files\dotnet\sdk]
+
