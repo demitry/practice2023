@@ -39,3 +39,8 @@ Restoring ...\practice2023\TestMvvmApp\TestMvvmApp.csproj:
 Restore succeeded.
 
 
+
+Removed from XAML: StartupUri="MainWindow.xaml
+Startup from Apps OnStartup
+Initial Components and View
+
