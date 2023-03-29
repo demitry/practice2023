@@ -44,3 +44,6 @@ Removed from XAML: StartupUri="MainWindow.xaml
 Startup from Apps OnStartup
 Initial Components and View
 
+Let it be toys
+
+

@@ -18,9 +18,9 @@ namespace TestMvvmApp.Components
     /// <summary>
     /// Interaction logic for ItemsListing.xaml
     /// </summary>
-    public partial class ItemsListing : UserControl
+    public partial class ToysListing : UserControl
     {
-        public ItemsListing()
+        public ToysListing()
         {
             InitializeComponent();
         }

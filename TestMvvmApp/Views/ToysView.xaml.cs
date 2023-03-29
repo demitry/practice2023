@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TestMvvmApp.Components
+namespace TestMvvmApp.Views
 {
     /// <summary>
-    /// Interaction logic for ItemDetails.xaml
+    /// Interaction logic for ToysView.xaml
     /// </summary>
-    public partial class ItemDetails : UserControl
+    public partial class ToysView : UserControl
     {
-        public ItemDetails()
+        public ToysView()
         {
             InitializeComponent();
         }
