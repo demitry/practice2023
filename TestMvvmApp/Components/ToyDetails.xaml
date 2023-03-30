@@ -11,9 +11,10 @@
     <Grid>
         <Border
             Padding="20"
-            BorderBrush="Gray"
+            BorderBrush="{StaticResource BorderPrimary}"
             BorderThickness="1"
-            CornerRadius="5">
+            CornerRadius="5"
+            SnapsToDevicePixels="True">
 
             <Grid Grid.IsSharedSizeScope="True">
                 <Grid.RowDefinitions>

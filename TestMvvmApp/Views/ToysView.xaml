@@ -28,9 +28,8 @@
 
             <Button
                 Grid.Column="1"
-                Padding="15,5"
-                VerticalAlignment="Center"
-                Content="Add" />
+                Content="Add"
+                FontSize="16" />
         </Grid>
 
         <Grid Grid.Row="1" Margin="0,20,0,0">

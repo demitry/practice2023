@@ -10,9 +10,10 @@
     mc:Ignorable="d">
     <Grid>
         <Border
-            BorderBrush="Gray"
+            BorderBrush="{StaticResource BorderPrimary}"
             BorderThickness="1"
-            CornerRadius="5">
+            CornerRadius="5"
+            SnapsToDevicePixels="True">
             <ListView />
         </Border>
     </Grid>
