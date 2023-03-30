@@ -46,4 +46,7 @@ Initial Components and View
 
 Let it be toys
 
-
+Align:
+2 ColumnDefinitions
+Grid.IsSharedSizeScope="True"
+SharedSizeGroup="Label"
