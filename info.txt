@@ -50,5 +50,7 @@ Align:
 2 ColumnDefinitions
 Grid.IsSharedSizeScope="True"
 SharedSizeGroup="Label"
-
 SnapsToDevicePixels="True"
+
+Fixed Button Annoying Highlight by overriding the default button template
+Fixed Stupid borders with Grid.OpacityMask and border.
