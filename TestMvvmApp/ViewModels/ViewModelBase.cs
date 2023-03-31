@@ -8,6 +8,8 @@ namespace TestMvvmApp.ViewModels
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
+        protected virtual void Dispose() {}
+
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             Trace.WriteLine("Property Name: " + propertyName);

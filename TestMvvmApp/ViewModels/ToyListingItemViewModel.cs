@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
+using TestMvvmApp.Models;
 
 namespace TestMvvmApp.ViewModels
 {
     public class ToyListingItemViewModel : ViewModelBase
     {
-        public string ToyName { get; }
+        public Toy Toy { get; }
+
+        public string ToyName => Toy.Name;
         public ICommand EditCommand { get; }
         public ICommand DeleteCommand { get; }
 
-        public ToyListingItemViewModel(string toyName)
+        public ToyListingItemViewModel(Toy toy)
         {
-            ToyName = toyName;
+            Toy = toy;
         }
     }
 }

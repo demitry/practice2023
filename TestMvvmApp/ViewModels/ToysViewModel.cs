@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using TestMvvmApp.Stores;
 
 namespace TestMvvmApp.ViewModels
 {
@@ -14,10 +15,10 @@ namespace TestMvvmApp.ViewModels
 
         public ICommand AddToyCommand { get; }
 
-        public ToysViewModel()
+        public ToysViewModel(SelectedToyStore selectedToyStore)
         {
-            ToysListingViewModel = new ToysListingViewModel();
-            ToyDetailsViewModel = new ToyDetailsViewModel();
+            ToysListingViewModel = new ToysListingViewModel(selectedToyStore);
+            ToyDetailsViewModel = new ToyDetailsViewModel(selectedToyStore);
         }
     }
 }

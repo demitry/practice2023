@@ -1,24 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TestMvvmApp.Models;
+using TestMvvmApp.Stores;
 
 namespace TestMvvmApp.ViewModels
 {
     public class ToyDetailsViewModel: ViewModelBase
     {
-        public string Name { get; }
-        public string Description { get; }
-        public string Size { get; }
-        public string IsValidDisplay { get; }
+        private readonly SelectedToyStore _selectedToyStore;
+        private Toy Selected => _selectedToyStore.SelectedToy;
+        public bool HasSelectedToy => Selected != null;
 
-        public ToyDetailsViewModel()
+        public string Name => Selected?.Name ?? "Unknown";
+        public string Description => Selected?.Description ?? "Unknown";
+        public string Size => Selected?.Size ?? "Unknown";
+        public string IsValidDisplay => (Selected?.IsValid ?? false) ? "Yes" : "No";
+
+        public ToyDetailsViewModel(SelectedToyStore selectedToyStore)
         {
-            Name = "Yo-yo";
-            Description = "Japan Yo-yo";
-            Size = "Small";
-            IsValidDisplay = "Yes";
+            _selectedToyStore = selectedToyStore;
+            _selectedToyStore.SelectedToyChanged += SelectedToyStore_SelectedToyChanged; //Subscribe
+        }
+
+        protected override void Dispose()
+        {
+            _selectedToyStore.SelectedToyChanged -= SelectedToyStore_SelectedToyChanged; //and Unsubscribe
+            base.Dispose();
+        }
+
+        private void SelectedToyStore_SelectedToyChanged()
+        {
+            OnPropertyChanged(nameof(HasSelectedToy));
+            OnPropertyChanged(nameof(Name));
+            OnPropertyChanged(nameof(Description));
+            OnPropertyChanged(nameof(Size));
+            OnPropertyChanged(nameof(IsValidDisplay));
         }
     }
 }
