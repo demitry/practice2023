@@ -25,7 +25,7 @@ namespace TestMvvmApp.ViewModels
                 _selectedToyListingItemViewModel = value;
                 OnPropertyChanged(nameof(SelectedToyListingItemViewModel));
 
-                _selectedToyStore.SelectedToy = _selectedToyListingItemViewModel.Toy;
+                _selectedToyStore.SelectedToy = _selectedToyListingItemViewModel?.Toy;
             }
         }
 
