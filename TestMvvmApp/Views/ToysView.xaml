@@ -28,6 +28,7 @@
 
             <Button
                 Grid.Column="1"
+                Command="{Binding AddToyCommand}"
                 Content="Add"
                 FontSize="16" />
         </Grid>
@@ -38,8 +39,11 @@
                 <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
 
-            <components:ToysListing Grid.Column="0" />
-            <components:ToyDetails Grid.Column="1" Margin="20,0,0,0" />
+            <components:ToysListing Grid.Column="0" DataContext="{Binding ToysListingViewModel}" />
+            <components:ToyDetails
+                Grid.Column="1"
+                Margin="20,0,0,0"
+                DataContext="{Binding ToyDetailsViewModel}" />
         </Grid>
     </Grid>
 </UserControl>

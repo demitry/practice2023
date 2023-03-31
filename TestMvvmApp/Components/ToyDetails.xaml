@@ -21,12 +21,13 @@
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
 
                 <TextBlock
                     Grid.Row="0"
                     FontSize="24"
-                    Text="YoYo" />
+                    Text="{Binding Name}" />
 
                 <Grid Grid.Row="1" Margin="0,20,0,0">
                     <Grid.ColumnDefinitions>
@@ -40,7 +41,7 @@
                     <TextBlock
                         Grid.Column="1"
                         Margin="20,0,0,0"
-                        Text="Yo-yo" />
+                        Text="{Binding Description}" />
                 </Grid>
 
                 <Grid Grid.Row="2" Margin="0,20,0,0">
@@ -55,8 +56,24 @@
                     <TextBlock
                         Grid.Column="1"
                         Margin="20,0,0,0"
-                        Text="Small" />
+                        Text="{Binding Size}" />
                 </Grid>
+
+                <Grid Grid.Row="3" Margin="0,20,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" SharedSizeGroup="Label" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        FontWeight="Bold"
+                        Text="Is Valid" />
+                    <TextBlock
+                        Grid.Column="1"
+                        Margin="20,0,0,0"
+                        Text="{Binding IsValidDisplay}" />
+                </Grid>
+
             </Grid>
         </Border>
     </Grid>

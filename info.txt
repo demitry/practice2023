@@ -38,19 +38,43 @@ Restoring ...\practice2023\TestMvvmApp\TestMvvmApp.csproj:
   Restored f:\NEW_JOB_2023\git\practice2023\TestMvvmApp\TestMvvmApp.csproj (in 92 ms).
 Restore succeeded.
 
-
-
 Removed from XAML: StartupUri="MainWindow.xaml
 Startup from Apps OnStartup
 Initial Components and View
 
 Let it be toys
 
-Align:
-2 ColumnDefinitions
+Align 2 ColumnDefinitions
 Grid.IsSharedSizeScope="True"
 SharedSizeGroup="Label"
 SnapsToDevicePixels="True"
 
 Fixed Button Annoying Highlight by overriding the default button template
 Fixed Stupid borders with Grid.OpacityMask and border.
+
+System.Runtime.CompilerServices
+protected virtual void OnPropertyChanged([CallerMemberName]string propery = "")
+This information helps you with tracing and debugging, and helps you to create diagnostic tools.
+The following example shows how to use caller info attributes. On each call to the TraceMessage method, the caller information is inserted for the arguments to the optional parameters.
+
+public void DoProcessing()
+{
+    TraceMessage("Something happened.");
+}
+
+public void TraceMessage(string message,
+        [CallerMemberName] string memberName = "",
+        [CallerFilePath] string sourceFilePath = "",
+        [CallerLineNumber] int sourceLineNumber = 0)
+{
+    Trace.WriteLine("message: " + message);
+    Trace.WriteLine("member name: " + memberName);
+    Trace.WriteLine("source file path: " + sourceFilePath);
+    Trace.WriteLine("source line number: " + sourceLineNumber);
+}
+
+// Sample Output:
+//  message: Something happened.
+//  member name: DoProcessing
+//  source file path: c:\Visual Studio Projects\CallerInfoCS\CallerInfoCS\Form1.cs
+//  source line number: 31
