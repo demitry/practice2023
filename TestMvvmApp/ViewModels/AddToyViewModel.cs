@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using TestMvvmApp.Commands;
+using TestMvvmApp.Stores;
 
 namespace TestMvvmApp.ViewModels
 {
@@ -10,9 +13,10 @@ namespace TestMvvmApp.ViewModels
     {
         public ToyDetailsFormViewModel ToyDetailsFormViewModel { get; }
 
-        public AddToyViewModel()
+        public AddToyViewModel(ModalNavigationStore modalNavigationStore)
         {
-            ToyDetailsFormViewModel = new ToyDetailsFormViewModel();
+            ICommand cancelCommand = new CloseModalCommand(modalNavigationStore);
+            ToyDetailsFormViewModel = new ToyDetailsFormViewModel(submitCommand: null, cancelCommand);
         }
     }
 }

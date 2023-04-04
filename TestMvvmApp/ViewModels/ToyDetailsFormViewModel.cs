@@ -61,6 +61,14 @@ namespace TestMvvmApp.ViewModels
         public bool CanSubmit => !string.IsNullOrWhiteSpace(Name);
 
         public ICommand SubmitCommand { get; }
+        
         public ICommand CancelCommand { get; }
+        
+        public ToyDetailsFormViewModel(ICommand submitCommand, ICommand cancelCommand)
+        {
+            SubmitCommand = submitCommand;
+            CancelCommand = cancelCommand;
+        }
+
     }
 }
