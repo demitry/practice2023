@@ -20,6 +20,9 @@
             Style="{StaticResource PageHeader}"
             Text="Add Toy" />
 
-        <components:ToyDetailsForm Grid.Row="1" Margin="0,30,0,0" />
+        <components:ToyDetailsForm
+            Grid.Row="1"
+            Margin="0,30,0,0"
+            DataContext="{Binding ToyDetailsFormViewModel}" />
     </Grid>
 </UserControl>
