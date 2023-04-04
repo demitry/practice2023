@@ -56,3 +56,65 @@ SelectedToyViewerListingItemViewModel
 ToyListingItemViewModel
 
 Add-Edit Views
+
+Tricky Tricks:
+1) Ctrl + Click to unselect item and get NullReference Exception, add? : _selectedToyStore.SelectedToy = _selectedToyListingItemViewModel?.Toy;
+2) Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" -> Update on textchange (text boxes works only after lodt focus)
+3) <custom:Modal Panel.ZIndex="1" IsOpen="{Binding IsModalOpen}"> -> ZIndex="1" to show on the top
+4) Fix Stupid Borders with OpacityMask
+            <Grid>
+                <Grid.OpacityMask>
+                    <VisualBrush Visual="{Binding ElementName=border}" />
+                </Grid.OpacityMask>
+                <Border
+                    x:Name="border"
+                    Background="White"
+                    CornerRadius="5" />
+                <ListView BorderThickness="0" />
+            </Grid>
+5) Fix Blinking Button / Annoying Highlight with styles
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border
+                                Margin="{TemplateBinding Margin}"
+                                Padding="{TemplateBinding Padding}"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="3">
+                                <ContentPresenter />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Trigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                        To="#2a3d82"
+                                        Duration="0:0:0.1" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.EnterActions>
+                        <Trigger.ExitActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                        To="#457aff"
+                                        Duration="0:0:0.1" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.ExitActions>
+                    </Trigger>
+                </Style.Triggers>
+6) Use namespace for VNs
+    xmlns:vms="clr-namespace:TestMvvmApp.ViewModels"
+        <DataTemplate DataType="{x:Type vms:AddToyViewModel}">
+        <DataTemplate DataType="{x:Type vms:EditToyViewModel}">
