@@ -12,6 +12,13 @@
     FontSize="14"
     mc:Ignorable="d">
     <Grid Margin="20">
+        <!--  Test Views  -->
+        <!--<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="25">
+                <views:AddToyView />
+                <views:EditToyView />
+            </StackPanel>
+        </ScrollViewer>-->
         <views:ToysView />
     </Grid>
 </Window>

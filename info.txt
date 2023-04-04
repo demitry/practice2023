@@ -52,3 +52,7 @@ public void TraceMessage(string message,
 Communication with Stores
 Stores are above the VM layer
 
+SelectedToyViewerListingItemViewModel
+ToyListingItemViewModel
+
+Add-Edit Views

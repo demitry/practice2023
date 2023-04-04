@@ -15,66 +15,98 @@
             BorderThickness="1"
             CornerRadius="5"
             SnapsToDevicePixels="True">
+            <Grid>
 
-            <Grid Grid.IsSharedSizeScope="True">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
-                </Grid.RowDefinitions>
-
-                <TextBlock
-                    Grid.Row="0"
-                    FontSize="24"
-                    Text="{Binding Name}" />
-
-                <Grid Grid.Row="1" Margin="0,20,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto" SharedSizeGroup="Label" />
-                        <ColumnDefinition Width="auto" />
-                    </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding HasSelectedToy}" Value="False">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
                     <TextBlock
-                        Grid.Column="0"
-                        FontWeight="Bold"
-                        Text="Description" />
-                    <TextBlock
-                        Grid.Column="1"
-                        Margin="20,0,0,0"
-                        Text="{Binding Description}" />
+                        FontSize="14"
+                        Text="Please select a Toy to see details."
+                        TextWrapping="WrapWithOverflow" />
                 </Grid>
 
-                <Grid Grid.Row="2" Margin="0,20,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto" SharedSizeGroup="Label" />
-                        <ColumnDefinition Width="auto" />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock
-                        Grid.Column="0"
-                        FontWeight="Bold"
-                        Text="Size" />
-                    <TextBlock
-                        Grid.Column="1"
-                        Margin="20,0,0,0"
-                        Text="{Binding Size}" />
-                </Grid>
+                <Grid Grid.IsSharedSizeScope="True">
 
-                <Grid Grid.Row="3" Margin="0,20,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto" SharedSizeGroup="Label" />
-                        <ColumnDefinition Width="auto" />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock
-                        Grid.Column="0"
-                        FontWeight="Bold"
-                        Text="Is Valid" />
-                    <TextBlock
-                        Grid.Column="1"
-                        Margin="20,0,0,0"
-                        Text="{Binding IsValidDisplay}" />
-                </Grid>
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding HasSelectedToy}" Value="True">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
 
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.Row="0"
+                        FontSize="24"
+                        Text="{Binding Name}" />
+
+                    <Grid Grid.Row="1" Margin="0,20,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" SharedSizeGroup="Label" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            Grid.Column="0"
+                            FontWeight="Bold"
+                            Text="Description" />
+                        <TextBlock
+                            Grid.Column="1"
+                            Margin="20,0,0,0"
+                            Text="{Binding Description}" />
+                    </Grid>
+
+                    <Grid Grid.Row="2" Margin="0,20,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" SharedSizeGroup="Label" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            Grid.Column="0"
+                            FontWeight="Bold"
+                            Text="Size" />
+                        <TextBlock
+                            Grid.Column="1"
+                            Margin="20,0,0,0"
+                            Text="{Binding Size}" />
+                    </Grid>
+
+                    <Grid Grid.Row="3" Margin="0,20,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" SharedSizeGroup="Label" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            Grid.Column="0"
+                            FontWeight="Bold"
+                            Text="Is Valid" />
+                        <TextBlock
+                            Grid.Column="1"
+                            Margin="20,0,0,0"
+                            Text="{Binding IsValidDisplay}" />
+                    </Grid>
+
+                </Grid>
             </Grid>
+
         </Border>
     </Grid>
 </UserControl>
