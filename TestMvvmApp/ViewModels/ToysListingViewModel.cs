@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using TestMvvmApp.Commands;
 using TestMvvmApp.Models;
 using TestMvvmApp.Stores;
 
@@ -29,16 +31,20 @@ namespace TestMvvmApp.ViewModels
             }
         }
 
-        public ToysListingViewModel(SelectedToyStore selectedToyStore)
+        public ToysListingViewModel(SelectedToyStore selectedToyStore, ModalNavigationStore modalNavigationStore)
         {
             _selectedToyStore = selectedToyStore;
-            _toyListingItemViewModels = new ObservableCollection<ToyListingItemViewModel>
-            {
-                new ToyListingItemViewModel(new Toy("Yo-yo", "Japanese yo-yo", "Small", true)),
-                new ToyListingItemViewModel(new Toy("Car", "Test Car", "Medium", true)),
-                new ToyListingItemViewModel(new Toy("Track", "Test Track", "Large", true)),
-                new ToyListingItemViewModel(new Toy("Gun", "Not a toy", "Small", false)),
-            };
+            _toyListingItemViewModels = new ObservableCollection<ToyListingItemViewModel>();
+            AddToy(new Toy("Yo-yo", "Japanese yo-yo", "Small", true), modalNavigationStore);
+            AddToy(new Toy("Car", "Test Car", "Medium", true), modalNavigationStore);
+            AddToy(new Toy("Track", "Test Track", "Large", true), modalNavigationStore);
+            AddToy(new Toy("Gun", "Not a toy", "Small", false), modalNavigationStore);
+        }
+
+        private void AddToy(Toy toy, ModalNavigationStore modalNavigationStore)
+        {
+            ICommand editCommand = new OpenEditToyCommand(toy, modalNavigationStore);
+            _toyListingItemViewModels.Add(new ToyListingItemViewModel(toy, editCommand));
         }
 
     }

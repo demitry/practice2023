@@ -18,7 +18,7 @@ namespace TestMvvmApp.ViewModels
 
         public ToysViewModel(SelectedToyStore selectedToyStore, ModalNavigationStore modalNavigationStore)
         {
-            ToysListingViewModel = new ToysListingViewModel(selectedToyStore);
+            ToysListingViewModel = new ToysListingViewModel(selectedToyStore, modalNavigationStore);
             ToyDetailsViewModel = new ToyDetailsViewModel(selectedToyStore);
 
             AddToyCommand = new OpenAddToyCommand(modalNavigationStore);

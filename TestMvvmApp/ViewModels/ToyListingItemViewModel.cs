@@ -11,9 +11,10 @@ namespace TestMvvmApp.ViewModels
         public ICommand EditCommand { get; }
         public ICommand DeleteCommand { get; }
 
-        public ToyListingItemViewModel(Toy toy)
+        public ToyListingItemViewModel(Toy toy, ICommand editCommand)
         {
             Toy = toy;
+            EditCommand = editCommand;
         }
     }
 }
