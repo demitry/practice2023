@@ -19,7 +19,7 @@ public partial class App : Application
     public App()
     {
         _toysStore = new ToysStore();
-        _selectedToyStore = new SelectedToyStore();
+        _selectedToyStore = new SelectedToyStore(_toysStore);
         _modalNavigationStore = new ModalNavigationStore();
     }
 
