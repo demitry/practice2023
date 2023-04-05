@@ -22,9 +22,9 @@ namespace TestMvvmApp.Commands
 
         public override void Execute(object? parameter)
         {
-            EditToyViewModel addToyViewModel = new EditToyViewModel(_toy, _modalNavigationStore);
+            EditToyViewModel editToyViewModel = new EditToyViewModel(_toy, _modalNavigationStore);
 
-            _modalNavigationStore.CurrentViewModel = addToyViewModel;
+            _modalNavigationStore.CurrentViewModel = editToyViewModel;
         }
     }
 }

@@ -35,10 +35,10 @@ namespace TestMvvmApp.ViewModels
         {
             _selectedToyStore = selectedToyStore;
             _toyListingItemViewModels = new ObservableCollection<ToyListingItemViewModel>();
-            AddToy(new Toy("Yo-yo", "Japanese yo-yo", "Small", true), modalNavigationStore);
-            AddToy(new Toy("Car", "Test Car", "Medium", true), modalNavigationStore);
-            AddToy(new Toy("Track", "Test Track", "Large", true), modalNavigationStore);
-            AddToy(new Toy("Gun", "Not a toy", "Small", false), modalNavigationStore);
+            AddToy(new Toy(name: "Yo-yo", description: "Japanese yo-yo", size: "Small", isValid: true), modalNavigationStore);
+            AddToy(new Toy(name: "Car", description: "Test Car", size: "Medium", isValid: true), modalNavigationStore);
+            AddToy(new Toy(name: "Track", description: "Test Track", size: "Large", isValid: true), modalNavigationStore);
+            AddToy(new Toy(name: "Gun", description: "Not a toy", size: "Small", isValid: false), modalNavigationStore);
         }
 
         private void AddToy(Toy toy, ModalNavigationStore modalNavigationStore)

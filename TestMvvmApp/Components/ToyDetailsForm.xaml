@@ -24,7 +24,6 @@
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
-
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto" SharedSizeGroup="Label" />
@@ -52,22 +51,22 @@
                 <TextBox
                     Grid.Column="1"
                     Margin="20,0,0,0"
-                    Text="{Binding Description}" />
+                    Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
 
             <Grid Grid.Row="2" Margin="0,20,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto" SharedSizeGroup="Label" />
-                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" MaxWidth="250" />
                 </Grid.ColumnDefinitions>
                 <TextBlock
                     Grid.Column="0"
                     FontWeight="Bold"
                     Text="Size" />
-                <TextBlock
+                <TextBox
                     Grid.Column="1"
                     Margin="20,0,0,0"
-                    Text="{Binding Size}" />
+                    Text="{Binding Size, UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
 
             <Grid Grid.Row="3" Margin="0,20,0,0">
@@ -83,7 +82,7 @@
                     Grid.Column="1"
                     Margin="20,0,0,0"
                     VerticalAlignment="Center"
-                    IsChecked="{Binding IsValid}" />
+                    IsChecked="{Binding IsValid, UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
 
         </Grid>

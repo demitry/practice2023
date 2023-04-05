@@ -29,7 +29,7 @@ namespace TestMvvmApp.ViewModels
             get { return _description; }
             set
             {
-                _name = value;
+                _description = value;
                 OnPropertyChanged(nameof(Description));
             }
         }
@@ -41,7 +41,7 @@ namespace TestMvvmApp.ViewModels
             get { return _size; }
             set
             {
-                _name = value;
+                _size = value;
                 OnPropertyChanged(nameof(Size));
             }
         }
