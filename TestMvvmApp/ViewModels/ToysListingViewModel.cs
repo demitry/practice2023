@@ -70,8 +70,8 @@ namespace TestMvvmApp.ViewModels
 
         private void AddToy(Toy toy)
         {
-            ICommand editCommand = new OpenEditToyCommand(toy, _modalNavigationStore);
-            _toyListingItemViewModels.Add(new ToyListingItemViewModel(toy, editCommand));
+            ToyListingItemViewModel itemViewModel = new ToyListingItemViewModel(toy, _toysStore, _modalNavigationStore);
+            _toyListingItemViewModels.Add(itemViewModel);
         }
 
     }

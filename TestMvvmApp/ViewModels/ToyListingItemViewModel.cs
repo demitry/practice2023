@@ -1,5 +1,7 @@
 ﻿using System.Windows.Input;
+using TestMvvmApp.Commands;
 using TestMvvmApp.Models;
+using TestMvvmApp.Stores;
 
 namespace TestMvvmApp.ViewModels
 {
@@ -11,10 +13,11 @@ namespace TestMvvmApp.ViewModels
         public ICommand EditCommand { get; }
         public ICommand DeleteCommand { get; }
 
-        public ToyListingItemViewModel(Toy toy, ICommand editCommand)
+        public ToyListingItemViewModel(Toy toy, ToysStore toysStore, ModalNavigationStore modalNavigationStore)
         {
             Toy = toy;
-            EditCommand = editCommand;
+
+            EditCommand = new OpenEditToyCommand(this, toysStore, modalNavigationStore);
         }
 
         public void Update(Toy toy)

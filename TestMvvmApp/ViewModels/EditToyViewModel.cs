@@ -14,10 +14,11 @@ namespace TestMvvmApp.ViewModels
     {
         public ToyDetailsFormViewModel ToyDetailsFormViewModel { get; }
 
-        public EditToyViewModel(Toy toy, ModalNavigationStore modalNavigationStore)
+        public EditToyViewModel(Toy toy, ToysStore toysStore, ModalNavigationStore modalNavigationStore)
         {
+            ICommand submitCommand = new EditToyCommand(this, toysStore, modalNavigationStore);
             ICommand cancelCommand = new CloseModalCommand(modalNavigationStore);
-            ToyDetailsFormViewModel = new ToyDetailsFormViewModel(submitCommand: null, cancelCommand)
+            ToyDetailsFormViewModel = new ToyDetailsFormViewModel(submitCommand, cancelCommand)
             {
                 Name = toy.Name,
                 Description = toy.Description,

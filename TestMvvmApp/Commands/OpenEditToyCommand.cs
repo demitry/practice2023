@@ -11,18 +11,21 @@ namespace TestMvvmApp.Commands
 {
     internal class OpenEditToyCommand : CommandBase
     {
-        private readonly Toy _toy;
         private readonly ModalNavigationStore _modalNavigationStore;
+        private readonly ToyListingItemViewModel _toyListingItemViewModel;
+        private readonly ToysStore _toysStore;
 
-        public OpenEditToyCommand(Toy toy, ModalNavigationStore modalNavigationStore)
+        public OpenEditToyCommand(ToyListingItemViewModel toyListingItemViewModel, ToysStore toysStore, ModalNavigationStore modalNavigationStore)
         {
-            _toy = toy;
+            _toyListingItemViewModel = toyListingItemViewModel;
+            _toysStore = toysStore;
             _modalNavigationStore = modalNavigationStore;
         }
 
         public override void Execute(object? parameter)
         {
-            EditToyViewModel editToyViewModel = new EditToyViewModel(_toy, _modalNavigationStore);
+            Toy toy = _toyListingItemViewModel.Toy;
+            EditToyViewModel editToyViewModel = new EditToyViewModel(toy, _toysStore, _modalNavigationStore);
 
             _modalNavigationStore.CurrentViewModel = editToyViewModel;
         }
