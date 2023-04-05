@@ -59,8 +59,11 @@ Add-Edit Views
 
 Tricky Tricks:
 1) Ctrl + Click to unselect item and get NullReference Exception, add? : _selectedToyStore.SelectedToy = _selectedToyListingItemViewModel?.Toy;
+
 2) Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" -> Update on textchange (text boxes works only after lodt focus)
+
 3) <custom:Modal Panel.ZIndex="1" IsOpen="{Binding IsModalOpen}"> -> ZIndex="1" to show on the top
+
 4) Fix Stupid Borders with OpacityMask
             <Grid>
                 <Grid.OpacityMask>
@@ -72,6 +75,7 @@ Tricky Tricks:
                     CornerRadius="5" />
                 <ListView BorderThickness="0" />
             </Grid>
+
 5) Fix Blinking Button / Annoying Highlight with styles
                 <Setter Property="Cursor" Value="Hand" />
                 <Setter Property="VerticalAlignment" Value="Center" />
@@ -114,7 +118,16 @@ Tricky Tricks:
                         </Trigger.ExitActions>
                     </Trigger>
                 </Style.Triggers>
+
 6) Use namespace for VNs
     xmlns:vms="clr-namespace:TestMvvmApp.ViewModels"
         <DataTemplate DataType="{x:Type vms:AddToyViewModel}">
         <DataTemplate DataType="{x:Type vms:EditToyViewModel}">
+		
+7) Fix not closed menu
+<EventSetter Event="Click" Handler="Button_Click" />
+<custom:DropdownMenu x:Name="ToysListItemDropDown"
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ToysListItemDropDown.IsOpen = false;
+        }

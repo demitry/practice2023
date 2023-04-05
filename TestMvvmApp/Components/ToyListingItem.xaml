@@ -18,7 +18,10 @@
 
             <TextBlock Grid.Column="0" Text="{Binding ToyName}" />
 
-            <custom:DropdownMenu Grid.Column="1" Margin="10,0,0,0">
+            <custom:DropdownMenu
+                x:Name="ToysListItemDropDown"
+                Grid.Column="1"
+                Margin="10,0,0,0">
                 <Border
                     Background="White"
                     BorderBrush="Gray"
@@ -30,6 +33,9 @@
                                 <Setter Property="Background" Value="#f0f0f0" />
                                 <Setter Property="Foreground" Value="Black" />
                                 <Setter Property="Padding" Value="20,10" />
+                                <Setter Property="Cursor" Value="Hand" />
+
+                                <EventSetter Event="Click" Handler="Button_Click" />
 
                                 <Setter Property="Template">
                                     <Setter.Value>
