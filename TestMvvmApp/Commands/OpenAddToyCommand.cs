@@ -11,16 +11,18 @@ namespace TestMvvmApp.Commands
 {
     public class OpenAddToyCommand : CommandBase
     {
+        private readonly ToysStore _toysStore;
         private readonly ModalNavigationStore _modalNavigationStore;
 
-        public OpenAddToyCommand(ModalNavigationStore modalNavigationStore)
+        public OpenAddToyCommand(ToysStore toysStore, ModalNavigationStore modalNavigationStore)
         {
+            _toysStore = toysStore;
             _modalNavigationStore = modalNavigationStore;
         }
 
         public override void Execute(object? parameter)
         {
-            AddToyViewModel addToyViewModel = new AddToyViewModel(_modalNavigationStore);
+            AddToyViewModel addToyViewModel = new AddToyViewModel(_toysStore, _modalNavigationStore);
 
             _modalNavigationStore.CurrentViewModel = addToyViewModel;
         }

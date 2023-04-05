@@ -13,8 +13,12 @@ namespace TestMvvmApp.ViewModels
 {
     public class ToysListingViewModel: ViewModelBase
     {
+        private readonly ToysStore _toysStore;
+
         private readonly ObservableCollection<ToyListingItemViewModel> _toyListingItemViewModels;
+
         private readonly SelectedToyStore _selectedToyStore;
+        private readonly ModalNavigationStore _modalNavigationStore;
 
         public IEnumerable<ToyListingItemViewModel> ToyListingItemViewModels => _toyListingItemViewModels;
 
@@ -31,19 +35,30 @@ namespace TestMvvmApp.ViewModels
             }
         }
 
-        public ToysListingViewModel(SelectedToyStore selectedToyStore, ModalNavigationStore modalNavigationStore)
+        public ToysListingViewModel(ToysStore toysStore, SelectedToyStore selectedToyStore, ModalNavigationStore modalNavigationStore)
         {
+            _toysStore = toysStore;
             _selectedToyStore = selectedToyStore;
+            _modalNavigationStore = modalNavigationStore;
             _toyListingItemViewModels = new ObservableCollection<ToyListingItemViewModel>();
-            AddToy(new Toy(name: "Yo-yo", description: "Japanese yo-yo", size: "Small", isValid: true), modalNavigationStore);
-            AddToy(new Toy(name: "Car", description: "Test Car", size: "Medium", isValid: true), modalNavigationStore);
-            AddToy(new Toy(name: "Track", description: "Test Track", size: "Large", isValid: true), modalNavigationStore);
-            AddToy(new Toy(name: "Gun", description: "Not a toy", size: "Small", isValid: false), modalNavigationStore);
+
+            _toysStore.ToyAdded += ToysStore_ToyAdded;
         }
 
-        private void AddToy(Toy toy, ModalNavigationStore modalNavigationStore)
+        protected override void Dispose()
         {
-            ICommand editCommand = new OpenEditToyCommand(toy, modalNavigationStore);
+            _toysStore.ToyAdded -= ToysStore_ToyAdded;
+            base.Dispose();
+        }
+
+        private void ToysStore_ToyAdded(Toy toy)
+        {
+            AddToy(toy);
+        }
+
+        private void AddToy(Toy toy)
+        {
+            ICommand editCommand = new OpenEditToyCommand(toy, _modalNavigationStore);
             _toyListingItemViewModels.Add(new ToyListingItemViewModel(toy, editCommand));
         }
 

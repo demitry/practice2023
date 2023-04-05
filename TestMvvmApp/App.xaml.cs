@@ -11,18 +11,21 @@ namespace TestMvvmApp;
 /// </summary>
 public partial class App : Application
 {
+    //Stores
+    private readonly ToysStore _toysStore;
     private readonly SelectedToyStore _selectedToyStore;
     private readonly ModalNavigationStore _modalNavigationStore;
 
     public App()
     {
+        _toysStore = new ToysStore();
         _selectedToyStore = new SelectedToyStore();
         _modalNavigationStore = new ModalNavigationStore();
     }
 
     protected override void OnStartup(StartupEventArgs e)
     {
-        ToysViewModel toysViewModel = new ToysViewModel(_selectedToyStore, _modalNavigationStore);
+        ToysViewModel toysViewModel = new ToysViewModel(_toysStore, _selectedToyStore, _modalNavigationStore);
         
         MainWindow = new MainWindow()
         {

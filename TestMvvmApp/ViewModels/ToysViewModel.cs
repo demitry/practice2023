@@ -16,12 +16,12 @@ namespace TestMvvmApp.ViewModels
 
         public ICommand AddToyCommand { get; }
 
-        public ToysViewModel(SelectedToyStore selectedToyStore, ModalNavigationStore modalNavigationStore)
+        public ToysViewModel(ToysStore toysStore, SelectedToyStore selectedToyStore, ModalNavigationStore modalNavigationStore)
         {
-            ToysListingViewModel = new ToysListingViewModel(selectedToyStore, modalNavigationStore);
+            ToysListingViewModel = new ToysListingViewModel(toysStore, selectedToyStore, modalNavigationStore);
             ToyDetailsViewModel = new ToyDetailsViewModel(selectedToyStore);
 
-            AddToyCommand = new OpenAddToyCommand(modalNavigationStore);
+            AddToyCommand = new OpenAddToyCommand(toysStore, modalNavigationStore);
         }
     }
 }
