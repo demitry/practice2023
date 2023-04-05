@@ -43,11 +43,23 @@ namespace TestMvvmApp.ViewModels
             _toyListingItemViewModels = new ObservableCollection<ToyListingItemViewModel>();
 
             _toysStore.ToyAdded += ToysStore_ToyAdded;
+            _toysStore.ToyUpdated += ToysStore_ToyUpdated;
+        }
+
+        private void ToysStore_ToyUpdated(Toy toy)
+        {
+            ToyListingItemViewModel? toyListingItemViewModel = ToyListingItemViewModels.FirstOrDefault(t => t.Toy.Id == toy.Id);
+            if(null != toyListingItemViewModel)
+            {
+                toyListingItemViewModel.Update(toy);
+            }
         }
 
         protected override void Dispose()
         {
             _toysStore.ToyAdded -= ToysStore_ToyAdded;
+            _toysStore.ToyUpdated -= ToysStore_ToyUpdated;
+
             base.Dispose();
         }
 

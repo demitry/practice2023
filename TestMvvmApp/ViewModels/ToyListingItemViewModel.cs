@@ -5,7 +5,7 @@ namespace TestMvvmApp.ViewModels
 {
     public class ToyListingItemViewModel : ViewModelBase
     {
-        public Toy Toy { get; }
+        public Toy Toy { get; private set; } //Update with Update() method
 
         public string ToyName => Toy.Name;
         public ICommand EditCommand { get; }
@@ -15,6 +15,13 @@ namespace TestMvvmApp.ViewModels
         {
             Toy = toy;
             EditCommand = editCommand;
+        }
+
+        public void Update(Toy toy)
+        {
+            Toy = toy;
+
+            OnPropertyChanged(nameof(ToyName)); // ToyName depends on Toy
         }
     }
 }
