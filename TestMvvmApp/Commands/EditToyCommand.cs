@@ -28,7 +28,7 @@ namespace TestMvvmApp.Commands
             ToyDetailsFormViewModel formViewModel = _editToyViewModel.ToyDetailsFormViewModel;
 
             Toy toy = new Toy(
-                Guid.NewGuid(),
+                _editToyViewModel.ToyId,
                 formViewModel.Name,
                 formViewModel.Description,
                 formViewModel.Size,
