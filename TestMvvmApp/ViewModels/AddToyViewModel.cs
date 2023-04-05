@@ -15,8 +15,9 @@ namespace TestMvvmApp.ViewModels
 
         public AddToyViewModel(ModalNavigationStore modalNavigationStore)
         {
+            ICommand submitCommand = new AddToyCommand(modalNavigationStore);
             ICommand cancelCommand = new CloseModalCommand(modalNavigationStore);
-            ToyDetailsFormViewModel = new ToyDetailsFormViewModel(submitCommand: null, cancelCommand);
+            ToyDetailsFormViewModel = new ToyDetailsFormViewModel(submitCommand, cancelCommand);
         }
     }
 }
