@@ -58,6 +58,13 @@ ToyListingItemViewModel
 Add-Edit Views
 
 Tricky Tricks:
+0) CallerMemberName Trace      
+		protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+        {
+            Trace.WriteLine("Property Name: " + propertyName);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
 1) Ctrl + Click to unselect item and get NullReference Exception, add? : _selectedToyStore.SelectedToy = _selectedToyListingItemViewModel?.Toy;
 
 2) Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" -> Update on textchange (text boxes works only after lodt focus)
