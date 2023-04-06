@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 using TestMvvmApp.Commands;
-using TestMvvmApp.Models;
+using Toys.Domain.Models;
 using TestMvvmApp.Stores;
 
 namespace TestMvvmApp.ViewModels

@@ -1,4 +1,4 @@
-﻿using TestMvvmApp.Models;
+﻿using Toys.Domain.Models;
 
 namespace TestMvvmApp.Stores
 {

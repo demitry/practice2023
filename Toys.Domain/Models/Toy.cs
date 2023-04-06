@@ -1,4 +1,4 @@
-﻿namespace TestMvvmApp.Models
+﻿namespace Toys.Domain.Models
 {
     public class Toy
     {

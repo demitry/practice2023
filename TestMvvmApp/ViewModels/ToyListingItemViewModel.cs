@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
 using TestMvvmApp.Commands;
-using TestMvvmApp.Models;
 using TestMvvmApp.Stores;
+using Toys.Domain.Models;
 
 namespace TestMvvmApp.ViewModels
 {

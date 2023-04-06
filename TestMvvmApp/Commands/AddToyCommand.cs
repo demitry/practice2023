@@ -1,6 +1,6 @@
-﻿using TestMvvmApp.Models;
-using TestMvvmApp.Stores;
+﻿using TestMvvmApp.Stores;
 using TestMvvmApp.ViewModels;
+using Toys.Domain.Models;
 
 namespace TestMvvmApp.Commands
 {

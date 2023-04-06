@@ -1,5 +1,5 @@
 ﻿using System.Collections.ObjectModel;
-using TestMvvmApp.Models;
+using Toys.Domain.Models;
 using TestMvvmApp.Stores;
 
 namespace TestMvvmApp.ViewModels
