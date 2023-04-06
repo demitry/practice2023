@@ -5,6 +5,10 @@ VisualStudioVersion = 17.5.33103.201
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestMvvmApp", "TestMvvmApp.csproj", "{64890BA0-62C6-4849-AD45-F1637952577E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toys.EntityFramework", "..\Toys.EntityFramework\Toys.EntityFramework.csproj", "{58155A5A-2E01-44B4-9E3D-313370886CD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toys.Domain", "..\Toys.Domain\Toys.Domain.csproj", "{DC661E64-526C-459F-8A1B-E5C7C16760EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{64890BA0-62C6-4849-AD45-F1637952577E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64890BA0-62C6-4849-AD45-F1637952577E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64890BA0-62C6-4849-AD45-F1637952577E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58155A5A-2E01-44B4-9E3D-313370886CD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58155A5A-2E01-44B4-9E3D-313370886CD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58155A5A-2E01-44B4-9E3D-313370886CD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58155A5A-2E01-44B4-9E3D-313370886CD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC661E64-526C-459F-8A1B-E5C7C16760EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC661E64-526C-459F-8A1B-E5C7C16760EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC661E64-526C-459F-8A1B-E5C7C16760EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC661E64-526C-459F-8A1B-E5C7C16760EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
