@@ -10,11 +10,13 @@
 
   <ItemGroup>
     <PackageReference Include="DropdownMenu.WPF" Version="1.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.4" />
     <PackageReference Include="SimpleModal.WPF" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Toys.Domain\Toys.Domain.csproj" />
+    <ProjectReference Include="..\Toys.EntityFramework\Toys.EntityFramework.csproj" />
   </ItemGroup>
 
 </Project>
