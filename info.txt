@@ -138,3 +138,12 @@ Tricky Tricks:
         {
             ToysListItemDropDown.IsOpen = false;
         }
+
+Domain Model properties - readonly,
+=> work with DECOUPLED from Models DTOs (EF)
+
+DbContext is not thread-safe => used DbContextFactory
+
+            DbContextOptions dbContextOptions = new DbContextOptionsBuilder()
+                .UseSqlite(_connectionString)
+                .Options;
