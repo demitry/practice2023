@@ -144,6 +144,28 @@ Domain Model properties - readonly,
 
 DbContext is not thread-safe => used DbContextFactory
 
-            DbContextOptions dbContextOptions = new DbContextOptionsBuilder()
-                .UseSqlite(_connectionString)
-                .Options;
+Migrations
+Add Microsoft.EntityFrameworkCore.Design to Ef project
+Rebuild EF project
+
+for migrations could be used:
+1) .NET Generic host
+2) Design Time DbContext Factory
+
+Toys.EntityFramework -> Open In Terminal
+(Project have to reference Microsoft.EntityFrameworkCore.Design)
+
+dotnet tool install --global dotnet-ef
+dotnet ef migrations add Initial
+
+To install the dotnet-ef tool, run the following command:
+
+.NET 7: dotnet tool install --global dotnet-ef
+.NET 6: dotnet tool install --global dotnet-ef --version 6.*
+.NET 5: dotnet tool install --global dotnet-ef --version 5.*
+.NET Core 3: dotnet tool install --global dotnet-ef --version 3.*
+
+For more information about the history of dotnet-ef, see the announcement for ASP.NET Core 3 Preview 4,
+which explains that this tool was changed from being built-in to requiring an explicit install:
+The dotnet ef tool is no longer part of the .NET Core SDK
+This change allows us to ship dotnet ef as a regular .NET CLI tool that can be installed as either a global or local tool.
