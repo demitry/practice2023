@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using Toys.Domain.Models;
 using TestMvvmApp.Stores;
+using System.Windows.Input;
+using TestMvvmApp.Commands;
 
 namespace TestMvvmApp.ViewModels
 {
@@ -28,6 +30,8 @@ namespace TestMvvmApp.ViewModels
             }
         }
 
+        public ICommand LoadToysCommand { get; }
+
         public ToysListingViewModel(ToysStore toysStore, SelectedToyStore selectedToyStore, ModalNavigationStore modalNavigationStore)
         {
             _toysStore = toysStore;
@@ -35,8 +39,31 @@ namespace TestMvvmApp.ViewModels
             _modalNavigationStore = modalNavigationStore;
             _toyListingItemViewModels = new ObservableCollection<ToyListingItemViewModel>();
 
+            LoadToysCommand = new LoadToysCommand(toysStore);
+            //LoadToysCommand.Execute();  //Mmmmm... No, use Factory method instead.
+
+            _toysStore.ToysLoaded += ToysStore_ToysLoaded;
             _toysStore.ToyAdded += ToysStore_ToyAdded;
             _toysStore.ToyUpdated += ToysStore_ToyUpdated;
+        }
+
+        private void ToysStore_ToysLoaded()
+        {
+            _toyListingItemViewModels.Clear();
+
+            foreach (var toy in _toysStore.Toys)
+            {
+                AddToy(toy);
+            }
+        }
+
+        public static ToysListingViewModel LoadViewModel(ToysStore toysStore, SelectedToyStore selectedToyStore, ModalNavigationStore modalNavigationStore)
+        {
+            ToysListingViewModel toysListingViewModel = new ToysListingViewModel(toysStore, selectedToyStore, modalNavigationStore);
+
+            toysListingViewModel.LoadToysCommand.Execute(null);
+
+            return toysListingViewModel;
         }
 
         private void ToysStore_ToyUpdated(Toy toy)
@@ -50,6 +77,7 @@ namespace TestMvvmApp.ViewModels
 
         protected override void Dispose()
         {
+            _toysStore.ToysLoaded -= ToysStore_ToysLoaded;
             _toysStore.ToyAdded -= ToysStore_ToyAdded;
             _toysStore.ToyUpdated -= ToysStore_ToyUpdated;
 
@@ -66,6 +94,5 @@ namespace TestMvvmApp.ViewModels
             ToyListingItemViewModel itemViewModel = new ToyListingItemViewModel(toy, _toysStore, _modalNavigationStore);
             _toyListingItemViewModels.Add(itemViewModel);
         }
-
     }
 }

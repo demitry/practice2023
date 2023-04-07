@@ -54,6 +54,11 @@ public partial class App : Application
 
     protected override void OnStartup(StartupEventArgs e)
     {
+        using (ToysDbContext context = _toysDbContextFactory.Create())
+        {
+            context.Database.Migrate();
+        }
+
         ToysViewModel toysViewModel = new ToysViewModel(_toysStore, _selectedToyStore, _modalNavigationStore);
         
         MainWindow = new MainWindow()

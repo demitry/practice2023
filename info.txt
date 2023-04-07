@@ -169,3 +169,27 @@ For more information about the history of dotnet-ef, see the announcement for AS
 which explains that this tool was changed from being built-in to requiring an explicit install:
 The dotnet ef tool is no longer part of the .NET Core SDK
 This change allows us to ship dotnet ef as a regular .NET CLI tool that can be installed as either a global or local tool.
+
+Create DB file from terminal or in OnStartup()
+
+    protected override void OnStartup(StartupEventArgs e)
+    {
+        using (ToysDbContext context = _toysDbContextFactory.Create())
+        {
+            context.Database.Migrate();
+        }
+	...
+	}
+	=>>>
+practice2023\TestMvvmApp\bin\Debug\net8.0-windows\Toys.db
+Install SqLite Toolbox, Add Sqlite connection
+
+// xxx ctor
+//Mmmmm... No, use Factory method instead.
+        public static ToysListingViewModel LoadViewModel(ToysStore toysStore, SelectedToyStore selectedToyStore, ModalNavigationStore modalNavigationStore)
+        {
+            ToysListingViewModel toysListingViewModel = new ToysListingViewModel(toysStore, selectedToyStore, modalNavigationStore);
+            toysListingViewModel.LoadToysCommand.Execute(null);
+            return toysListingViewModel;
+        }
+		
