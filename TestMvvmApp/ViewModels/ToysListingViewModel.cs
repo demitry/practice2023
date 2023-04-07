@@ -45,6 +45,17 @@ namespace TestMvvmApp.ViewModels
             _toysStore.ToysLoaded += ToysStore_ToysLoaded;
             _toysStore.ToyAdded += ToysStore_ToyAdded;
             _toysStore.ToyUpdated += ToysStore_ToyUpdated;
+            _toysStore.ToyDeleted += ToysStore_ToyDeleted;
+        }
+
+        private void ToysStore_ToyDeleted(Guid id)
+        {
+            var toyListingItemViewModel = _toyListingItemViewModels.FirstOrDefault(t => t.Toy?.Id == id);
+
+            if (null != toyListingItemViewModel)
+            {
+                _toyListingItemViewModels.Remove(toyListingItemViewModel);
+            }
         }
 
         private void ToysStore_ToysLoaded()
@@ -80,6 +91,7 @@ namespace TestMvvmApp.ViewModels
             _toysStore.ToysLoaded -= ToysStore_ToysLoaded;
             _toysStore.ToyAdded -= ToysStore_ToyAdded;
             _toysStore.ToyUpdated -= ToysStore_ToyUpdated;
+            _toysStore.ToyDeleted -= ToysStore_ToyDeleted;
 
             base.Dispose();
         }

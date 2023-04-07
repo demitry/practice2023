@@ -18,6 +18,7 @@ namespace TestMvvmApp.ViewModels
             Toy = toy;
 
             EditCommand = new OpenEditToyCommand(this, toysStore, modalNavigationStore);
+            DeleteCommand = new DeleteToyCommand(this, toysStore);
         }
 
         public void Update(Toy toy)

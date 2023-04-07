@@ -14,6 +14,7 @@ namespace TestMvvmApp.Stores
         public event Action<Toy> ToyAdded;
         public event Action<Toy> ToyUpdated;
         public event Action ToysLoaded;
+        public event Action<Guid> ToyDeleted;
 
         private readonly List<Toy> _toys;
         public IEnumerable<Toy> Toys => _toys;
@@ -65,6 +66,15 @@ namespace TestMvvmApp.Stores
             }
 
             ToyUpdated?.Invoke(toy);
+        }
+
+        public async Task Delete(Guid id)
+        {
+            await _deleteToyCommand.Execute(id);
+
+            _toys.RemoveAll(t => t.Id == id);
+
+            ToyDeleted?.Invoke(id);
         }
     }
 }
